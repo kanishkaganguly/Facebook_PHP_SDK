@@ -35,9 +35,8 @@ and open the template in the editor.
             echo "<center> WEBSITE : " . $user_profile['link'] . "</center>";
             echo "<center> EMAIL : " . $user_profile['email'] . "</center>";
             echo "<center> BIRTHDAY : " . $user_profile['birthday'] . "</center>";
-
-            $logout_url = $facebook->getLogoutUrl(array('next' => 'http://localhost/GraphAPI/Facebook_PHP_SDK/logout.php'));
-            echo '<center><a href ="' . $logout_url . '">LOGOUT</a>';
+                       
+            echo '<center><a href ="'.$facebook->getLogoutUrl(array('next'=>'logout.php')).'">LOGOUT</a></center>';
         } catch (FacebookApiException $e) {
             $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday'));
             echo '<center>PLEASE <a href="' . $login_url . '">LOGIN</a></center>';

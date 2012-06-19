@@ -15,7 +15,7 @@ and open the template in the editor.
         <br>
         <h2>USING THE PHP SDK</h2>
     </center>
-    
+
     <?php
     include '/libs/facebook.php';
     $facebook = new Facebook(array(
@@ -29,7 +29,7 @@ and open the template in the editor.
         $this->session->sess_destroy();
     }
     ?>
-    
+
     <center><h3>YOU WILL BE REDIRECTED IN 5 SECONDS</h3></center>
 </body>
 </html>
