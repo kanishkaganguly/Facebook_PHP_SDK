@@ -22,7 +22,6 @@ and open the template in the editor.
 
     //CREATING A NEW SESSION
     $user_id = $facebook->getUser();
-    $UAT = $facebook->getAccessToken();
 
     if ($user_id) {
         try {
@@ -36,9 +35,9 @@ and open the template in the editor.
             echo "<center> WEBSITE : " . $user_profile['link'] . "</center>";
             echo "<center> EMAIL : " . $user_profile['email'] . "</center>";
             echo "<center> BIRTHDAY : " . $user_profile['birthday'] . "</center>";
-            
-            //$logout_url = $facebook->getLogoutUrl(array('next' => 'http://localhost/GraphAPI/Facebook_PHP_SDK/index.php'));
-            echo '<center><a href ="https://www.facebook.com/logout.php?next=http://localhost/GraphAPI/Facebook_PHP_SDK/index.php&access_token='.$UAT.'">LOGOUT</a></center>';
+
+            $logout_url = $facebook->getLogoutUrl(array('next' => 'http://localhost/GraphAPI/Facebook_PHP_SDK/logout.php'));
+            echo '<center><a href ="' . $logout_url . '">LOGOUT</a>';
         } catch (FacebookApiException $e) {
             $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday'));
             echo '<center>PLEASE <a href="' . $login_url . '">LOGIN</a></center>';
