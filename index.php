@@ -35,6 +35,7 @@ and open the template in the editor.
             echo "<center> GENDER : " . $user_profile['gender'] . "</center>";
             echo "<center> WEBSITE : " . $user_profile['link'] . "</center>";
             echo "<center> EMAIL : " . $user_profile['email'] . "</center>";
+            echo "<center> BIRTHDAY : " . $user_profile['birthday'] . "</center>";
             
             //$logout_url = $facebook->getLogoutUrl(array('next' => 'http://localhost/GraphAPI/Facebook_PHP_SDK/index.php'));
             echo '<center><a href ="https://www.facebook.com/logout.php?next=http://localhost/GraphAPI/Facebook_PHP_SDK/index.php&access_token='.$UAT.'">LOGOUT</a></center>';
@@ -43,8 +44,8 @@ and open the template in the editor.
             echo '<center>PLEASE <a href="' . $login_url . '">LOGIN</a></center>';
         }
     } else {
-        $login_url = $facebook->getLoginUrl();
-        echo 'Please <a href="' . $login_url . '">login.</a>';
+        $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday'));
+        echo '<center>PLEASE <a href="' . $login_url . '">LOGIN</center></a>';
     }
     ?>
 </body>
