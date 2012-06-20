@@ -6,7 +6,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title></title>
+        <title>FACEBOOK PHP SDK</title>
     </head>
     <body>
     <center>
@@ -56,18 +56,19 @@ and open the template in the editor.
             echo '</tr>';
             echo '<tr>';
             echo '<td>BIRTHDAY</td>';
-            echo '<td>'. $user_profile['birthday'] .'</td>';
+            echo '<td>' . $user_profile['birthday'] . '</td>';
             echo '</tr>';
             echo '</tbody>';
             echo '</table></center>';
-        
+            echo '<br>';
+            echo '<center><a href="wall_post.php">WALL POST</a></center>';
             echo '<center><a href ="' . $facebook->getLogoutUrl(array('next' => 'logout.php')) . '">LOGOUT</a></center>';
         } catch (FacebookApiException $e) {
-            $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday'));
+            $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday,publish_stream'));
             echo '<center>PLEASE <a href="' . $login_url . '">LOGIN</a></center>';
         }
     } else {
-        $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday'));
+        $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday, publish_stream'));
         echo '<center>PLEASE <a href="' . $login_url . '">LOGIN</center></a>';
     }
     ?>
