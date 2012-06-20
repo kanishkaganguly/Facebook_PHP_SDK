@@ -22,9 +22,13 @@ $user_id = $facebook->getUser();
         if ($user_id) {
             try {
                 $ret_obj = $facebook->api('/me/feed', 'POST', array(
-                    'link' => 'http://localhost/GraphAPI/Facebook_PHP_SDK/wall_post.php',
+                    'link' => 'http://localhost/GraphAPI/Facebook_PHP_SDK/index.php',
                     'message' => $_REQUEST['wall_post_form']
                         ));
+
+                echo '<br>';
+                echo '<center>SUCCESS FULLY POSTED</center>';
+                echo '<center><pre>POST ID : ' . $ret_obj['id'] . '</pre></center>';
             } catch (FacebookApiException $e) {
                 $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday,publish_stream'));
                 echo '<center>PLEASE <a href="' . $login_url . '">LOGIN</a></center>';
