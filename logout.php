@@ -25,7 +25,7 @@ and open the template in the editor.
 
     $user = $facebook->getUser();
 
-    if (!$user) {
+    if ($user) {
         $this->session->sess_destroy();
     }
     ?>

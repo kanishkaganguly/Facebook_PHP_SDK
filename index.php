@@ -10,7 +10,7 @@ and open the template in the editor.
     </head>
     <body>
     <center>
-        <h1>FACEBOOK OPEN GRAPH API</h1>
+        <h1><u>FACEBOOK OPEN GRAPH API</u></h1>
         <br>
         <h2>USING THE PHP SDK</h2>
     </center>
@@ -26,17 +26,42 @@ and open the template in the editor.
     if ($user_id) {
         try {
             $user_profile = $facebook->api('/me', 'GET');
-            echo "<center><u> WELCOME </u></center>";
-            echo "<br>";
-            echo '<center><img src="https://graph.facebook.com/thebeginningoftheend/picture"/></center>';
-            echo '<center> NAME : ' . $user_profile['name'] . '</center>';
-            echo '<center> USERNAME : ' . $user_profile['username'] . '</center>';
-            echo "<center> GENDER : " . $user_profile['gender'] . "</center>";
-            echo "<center> WEBSITE : " . $user_profile['link'] . "</center>";
-            echo "<center> EMAIL : " . $user_profile['email'] . "</center>";
-            echo "<center> BIRTHDAY : " . $user_profile['birthday'] . "</center>";
-                       
-            echo '<center><a href ="'.$facebook->getLogoutUrl(array('next'=>'logout.php')).'">LOGOUT</a></center>';
+            echo '<center><u> WELCOME </u></center>';
+            echo '<br>';
+            echo '<center><table border = "0" cellspacing = "15">';
+            echo '<tbody>';
+            echo '<tr>';
+            echo '<td> PROFILE PICTURE</td>';
+            echo '<td><img src="https://graph.facebook.com/thebeginningoftheend/picture"/></td>';
+            echo '</tr>';
+            echo '<tr>';
+            echo '<td>NAME</td>';
+            echo '<td>' . $user_profile['name'] . '</td>';
+            echo '</tr>';
+            echo '<tr>';
+            echo '<td>USERNAME</td>';
+            echo '<td>' . $user_profile['username'] . '</td>';
+            echo '</tr>';
+            echo '<tr>';
+            echo '<td>GENDER</td>';
+            echo '<td>' . $user_profile['gender'] . '</td>';
+            echo '</tr>';
+            echo '<tr>';
+            echo '<td>WEBSITE</td>';
+            echo '<td>' . $user_profile['link'] . '</td>';
+            echo '</tr>';
+            echo '<tr>';
+            echo '<td>EMAIL</td>';
+            echo '<td>' . $user_profile['email'] . '</td>';
+            echo '</tr>';
+            echo '<tr>';
+            echo '<td>BIRTHDAY</td>';
+            echo '<td>'. $user_profile['birthday'] .'</td>';
+            echo '</tr>';
+            echo '</tbody>';
+            echo '</table></center>';
+        
+            echo '<center><a href ="' . $facebook->getLogoutUrl(array('next' => 'logout.php')) . '">LOGOUT</a></center>';
         } catch (FacebookApiException $e) {
             $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday'));
             echo '<center>PLEASE <a href="' . $login_url . '">LOGIN</a></center>';
