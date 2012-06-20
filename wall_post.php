@@ -14,7 +14,10 @@ and open the template in the editor.
         <br>
         <h2>USING THE PHP SDK</h2>
     </center>
-    <?php
-    ?>
+    <form name="wall_post" action="post_success.php">
+        <textarea name="wall_post_form" rows="4" cols="20">
+        </textarea>
+        <input type="submit" value="POST TO WALL" name="post_wall" />
+    </form>
 </body>
 </html>
