@@ -52,6 +52,10 @@ $user_id = $facebook->getUser();
             echo '<td>' . $user_profile['link'] . '</td>';
             echo '</tr>';
             echo '<tr>';
+            echo '<td>LOCATION</td>';
+            echo '<td>' . $user_profile['location']['name'] . '</td>';
+            echo '</tr>';
+            echo '<tr>';
             echo '<td>EMAIL</td>';
             echo '<td>' . $user_profile['email'] . '</td>';
             echo '</tr>';
@@ -65,11 +69,11 @@ $user_id = $facebook->getUser();
             echo '<center><a href="wall_post.php">WALL POST</a></center>';
             echo '<center><a href ="' . $facebook->getLogoutUrl(array('next' => 'logout.php')) . '">LOGOUT</a></center>';
         } catch (FacebookApiException $e) {
-            $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday,publish_stream'));
+            $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday,user_location,   publish_stream'));
             echo '<center>PLEASE <a href="' . $login_url . '">LOGIN</a></center>';
         }
     } else {
-        $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday, publish_stream'));
+        $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday, user_location, publish_stream'));
         echo '<center>PLEASE <a href="' . $login_url . '">LOGIN</center></a>';
     }
     ?>
