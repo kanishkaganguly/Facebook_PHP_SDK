@@ -10,13 +10,7 @@ $facebook = new Facebook(array('appId' => '153405974793688', 'secret' => '747220
 
 //CREATING A NEW SESSION
 $user_id = $facebook->getUser();
-
-if ($_FILES["file"]["error"] > 0) {
-    echo "Error: " . $_FILES["file"]["error"] . "<br />";
-} else {
-    $photo = $_FILES["file"]["tmp_name"];
-    $message = 'PHOTO UPLOADED USING PHP SDK';
-}
+$facebook->setFileUploadSupport(true);
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +21,12 @@ if ($_FILES["file"]["error"] > 0) {
     </head>
     <body>
         <?php
+        if ($_FILES["file"]["error"] > 0) {
+            echo "Error: " . $_FILES["file"]["error"] . "<br />";
+        } else {
+            $photo = $_FILES["file"]["tmp_name"];
+            $message = 'PHOTO UPLOADED USING PHP SDK';
+        }
         if ($user_id) {
             try {
                 $ret_obj = $facebook->api('/me/photos', 'POST', array(
@@ -41,11 +41,11 @@ if ($_FILES["file"]["error"] > 0) {
                 echo '<br>';
                 echo '<center><a href="http://localhost/GraphAPI/Facebook_PHP_SDK/index.php">GO BACK</a></center>';
             } catch (FacebookApiException $e) {
-                $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday,user_location, publish_stream,photo_upload'));
+                $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday,user_location, publish_stream,photo_upload', 'redirect_uri' => 'http://localhost/GraphAPI/Facebook_PHP_SDK/index.php'));
                 echo '<center><a href="' . $login_url . '"><img src="imgs/fb_login_icon.gif"></a></center>';
             }
         } else {
-            $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday, user_location, publish_stream, photo_upload'));
+            $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday, user_location, publish_stream, photo_upload', 'redirect_uri' => 'http://localhost/GraphAPI/Facebook_PHP_SDK/index.php'));
             echo '<center><a href="' . $login_url . '"><img src="imgs/fb_login_icon.gif"></center></a>';
         }
         ?>
