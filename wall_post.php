@@ -22,7 +22,7 @@ and open the template in the editor.
             <textarea name="wall_post_form" rows="4" cols="20">
             </textarea>
             <br>
-            <input type="submit" value="POST TO WALL" name="post_wall" />
+            <input type="image" src ="imgs/post_button.png" name="post_wall" />
         </form>
     </center>
 </body>

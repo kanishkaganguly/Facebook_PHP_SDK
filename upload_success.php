@@ -25,7 +25,7 @@ $facebook->setFileUploadSupport(true);
             echo "Error: " . $_FILES["file"]["error"] . "<br />";
         } else {
             $photo = $_FILES["file"]["tmp_name"];
-            $message = 'PHOTO UPLOADED USING PHP SDK';
+            $message = $_REQUEST['pic_message'];
         }
         if ($user_id) {
             try {

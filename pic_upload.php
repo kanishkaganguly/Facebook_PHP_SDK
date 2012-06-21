@@ -27,11 +27,16 @@ $user_id = $facebook->getUser();
         <h1>OPEN GRAPH API</h1>
         <h2>USING THE PHP SDK</h2>
         <br>
-        <form action="upload_success.php" method="post" enctype="multipart/form-data">
-            <label for="file">Filename:</label>
-            <input type="file" name="file" id="file" /> 
-            <br />
-            <input type="submit" name="submit" value="Submit" />
-        </form>
+        <center><form action="upload_success.php" method="post" enctype="multipart/form-data">
+                <label for="file">IMAGE:</label>
+                <input type="file" name="file" id="file" /> 
+                <br>
+                <br>
+                <div id="pic_message">Write a note about the picture: <br><input type="text" name="pic_message" value="" size="50" /></div>
+                <br>
+                <br>
+                <input type="image" src ="imgs/post_button.png" name="submit"/>
+            </form>
+        </center>   
     </body>
 </html>
