@@ -30,13 +30,16 @@ $user_id = $facebook->getUser();
                 echo '<center>SUCCESS FULLY POSTED</center>';
                 echo '<br>';
                 echo '<center><pre>POST ID : ' . $ret_obj['id'] . '</pre></center>';
+                echo '<br>';
+                echo '<br>';
+                echo '<center><a href="index.php">GO BACK</a></center>';
             } catch (FacebookApiException $e) {
                 $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday, user_location, publish_stream'));
-                echo '<center>PLEASE <a href="' . $login_url . '">LOGIN</a></center>';
+                echo '<center><a href="' . $login_url . '"><img src="imgs/fb_login_icon.gif"></a></center>';
             }
         } else {
             $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday, user_location, publish_stream'));
-            echo '<center>PLEASE <a href="' . $login_url . '">LOGIN</center></a>';
+            echo '<center><a href="' . $login_url . '"><img src="imgs/fb_login_icon.gif"></center></a>';
         }
         ?>
     </body>

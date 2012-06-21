@@ -19,9 +19,12 @@ $user_id = $facebook->getUser();
     </head>
     <body>
     <center>
-        <h1><u>FACEBOOK OPEN GRAPH API</u></h1>
+        <img src="imgs/og_logo.png" height="150" width ="150"/>
         <br>
+        <img src ="imgs/facebook-logo.jpg" height ="80" width="250">
+        <h1><u>OPEN GRAPH API</u></h1>
         <h2>USING THE PHP SDK</h2>
+        <br><br>
     </center>
     <?php
     if ($user_id) {
@@ -37,7 +40,7 @@ $user_id = $facebook->getUser();
             echo '</tr>';
             echo '<tr>';
             echo '<td>NAME</td>';
-            echo '<td>' . $user_profile['name'] . '</td>';
+            echo '<td>' . $user_profile['name']. '</td>';
             echo '</tr>';
             echo '<tr>';
             echo '<td>USERNAME</td>';
@@ -45,7 +48,7 @@ $user_id = $facebook->getUser();
             echo '</tr>';
             echo '<tr>';
             echo '<td>GENDER</td>';
-            echo '<td>' . $user_profile['gender'] . '</td>';
+            echo '<td>' . ucfirst($user_profile['gender']) . '</td>';
             echo '</tr>';
             echo '<tr>';
             echo '<td>WEBSITE</td>';
@@ -67,15 +70,17 @@ $user_id = $facebook->getUser();
             echo '</table></center>';
             echo '<br>';
             echo '<center><a href="wall_post.php">WALL POST</a></center>';
-            echo '<center><a href ="' . $facebook->getLogoutUrl(array('next' => 'logout.php')) . '">LOGOUT</a></center>';
+            echo '<center><a href="pic_upload.php">UPLOAD A PHOTO</a></center>';
+            echo '<br>';
+            echo '<center><a href ="' . $facebook->getLogoutUrl(array('next' => 'logout.php')) . '"><img src="imgs/facebook_logout.jpg"></a></center>';
         } catch (FacebookApiException $e) {
             $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday,user_location,   publish_stream'));
-            echo '<center>PLEASE <a href="' . $login_url . '">LOGIN</a></center>';
+            echo '<center><a href="' . $login_url . '"><img src="imgs/fb_login_icon.gif"></a></center>';
         }
     } else {
         $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday, user_location, publish_stream'));
-        echo '<center>PLEASE <a href="' . $login_url . '">LOGIN</center></a>';
+        echo '<center><a href="' . $login_url . '"><img src="imgs/fb_login_icon.gif"></center></a>';
     }
     ?>
-</body>
+ </body>
 </html>
