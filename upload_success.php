@@ -10,7 +10,15 @@ $facebook = new Facebook(array('appId' => '153405974793688', 'secret' => '747220
 
 //CREATING A NEW SESSION
 $user_id = $facebook->getUser();
+
+if ($_FILES["file"]["error"] > 0) {
+    echo "Error: " . $_FILES["file"]["error"] . "<br />";
+} else {
+    $photo = $_FILES["file"]["tmp_name"];
+    $message = 'PHOTO UPLOADED USING PHP SDK';
+}
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,20 +29,19 @@ $user_id = $facebook->getUser();
         <?php
         if ($user_id) {
             try {
-                $ret_obj = $facebook->api('/me/feed', 'POST', array(
-                    'link' => 'http://localhost/GraphAPI/Facebook_PHP_SDK/index.php',
-                    'message' => $_REQUEST['wall_post_form']
-                        ));
-
-                echo '<br>';
+                $ret_obj = $facebook->api('/me/photos', 'POST', array(
+                    'source' => '@' . $photo,
+                    'message' => $message,
+                        )
+                );
                 echo '<center>SUCCESS FULLY POSTED</center>';
                 echo '<br>';
                 echo '<center><pre>POST ID : ' . $ret_obj['id'] . '</pre></center>';
                 echo '<br>';
                 echo '<br>';
-                echo '<center><a href="index.php">GO BACK</a></center>';
+                echo '<center><a href="http://localhost/GraphAPI/Facebook_PHP_SDK/index.php">GO BACK</a></center>';
             } catch (FacebookApiException $e) {
-                $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday, user_location, publish_stream, photo_upload'));
+                $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday,user_location, publish_stream,photo_upload'));
                 echo '<center><a href="' . $login_url . '"><img src="imgs/fb_login_icon.gif"></a></center>';
             }
         } else {
