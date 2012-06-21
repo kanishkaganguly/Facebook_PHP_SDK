@@ -18,19 +18,19 @@ $user_id = $facebook->getUser();
         <title>FACEBOOK PHP SDK</title>
     </head>
     <body>
+      <link rel="stylesheet" type="text/css" href="table_style.css" />
     <center>
         <img src="imgs/og_logo.png" height="150" width ="150"/>
         <br>
         <img src ="imgs/facebook-logo.jpg" height ="80" width="250">
-        <h1><u>OPEN GRAPH API</u></h1>
+        <h1>OPEN GRAPH API</h1>
         <h2>USING THE PHP SDK</h2>
-        <br><br>
+        <br>
     </center>
     <?php
     if ($user_id) {
         try {
             $user_profile = $facebook->api('/me', 'GET');
-            echo '<center><u> WELCOME </u></center>';
             echo '<br>';
             echo '<center><table border = "0" cellspacing = "15">';
             echo '<tbody>';
@@ -69,8 +69,8 @@ $user_id = $facebook->getUser();
             echo '</tbody>';
             echo '</table></center>';
             echo '<br>';
-            echo '<center><a href="wall_post.php">WALL POST</a></center>';
-            echo '<center><a href="pic_upload.php">UPLOAD A PHOTO</a></center>';
+            echo '<center><div id="wall_post_link"><a href="wall_post.php" >WALL POST</a></div></center>';
+            echo '<center><div id="photo_upload_link"><a href="pic_upload.php">UPLOAD A PHOTO</a></div></center>';
             echo '<br>';
             echo '<center><a href ="' . $facebook->getLogoutUrl(array('next' => 'logout.php')) . '"><img src="imgs/facebook_logout.jpg"></a></center>';
         } catch (FacebookApiException $e) {
