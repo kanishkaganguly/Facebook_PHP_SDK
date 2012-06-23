@@ -40,9 +40,9 @@ $user_id = $facebook->getUser();
     foreach ($friends['data'] as $friend) {
         if (strripos($friend['name'], $searchname) !== FALSE) {
             echo '<tr>';
-            echo '<td><img src="https://graph.facebook.com/' . $friend['id'] . '/picture?type=square"></td>';
-            echo '<td>' . $friend['id'] . '</td>';
-            echo '<td>' . $friend['name'] . '</td>';
+            echo '<td><a href="http://www.facebook.com/' . $friend['id'] . '"><div id="prof_pic"><img src="https://graph.facebook.com/' . $friend['id'] . '/picture?type=square"></div></a></td>';
+            echo '<td><a href="http://www.facebook.com/' . $friend['id'] . '">' . $friend['id'] . '</a></td>';
+            echo '<td><a href="http://www.facebook.com/' . $friend['id'] . '">' . $friend['name'] . '</a></td>';
             echo '<tr>';
         }
     }

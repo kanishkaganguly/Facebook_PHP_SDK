@@ -40,6 +40,7 @@ h1,h2, #pic_message{
 
 a:visited, a:link{
     color: #4F808C;
+    text-decoration: none;
 }
 
 textarea, #blank{
@@ -48,4 +49,9 @@ textarea, #blank{
     width: 500px;
     height: 200px;
     resize: none;
+}
+
+#prof_pic{
+    border-style: outset;
+    color: #98D5D9;
 }

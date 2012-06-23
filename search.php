@@ -19,7 +19,7 @@ and open the template in the editor.
         
         <form name="search_form" action="search_results.php">
             <div id ="pic_message">
-                ENTER NAME TO SEARCH FOR :<input type="text" name="search_term" value="" size="50" />
+                ENTER TERM TO SEARCH FOR :<input type="text" name="search_term" value="" size="50" />
                 <input type="image" src="imgs/search.png" height ="30" width="30" name="search_btn" />
             </div>
         </form>
