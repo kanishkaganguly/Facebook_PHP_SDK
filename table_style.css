@@ -1,4 +1,4 @@
-td {
+td, thead{
     font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
     color: #4f6b72;
     border-right: 1px solid #C1DAD7;
@@ -38,11 +38,11 @@ h1,h2, #pic_message{
     background: #13C2CF;
 }
 
-a:visited{
+a:visited, a:link{
     color: #4F808C;
 }
 
-textarea{
+textarea, #blank{
     color: #4F808C;
     background: #CAE8EA;
     width: 500px;

@@ -18,14 +18,13 @@ $user_id = $facebook->getUser();
         <title>FACEBOOK PHP SDK</title>
     </head>
     <body>
-      <link rel="stylesheet" type="text/css" href="table_style.css" />
+        <link rel="stylesheet" type="text/css" href="table_style.css" />
     <center>
-        <img src="imgs/og_logo.png" height="150" width ="150"/>
+        <img src="imgs/og_logo.png" height="100" width ="100"/>
         <br>
         <img src ="imgs/facebook-logo.jpg" height ="80" width="250">
         <h1>OPEN GRAPH API</h1>
         <h2>USING THE PHP SDK</h2>
-        <br>
     </center>
     <?php
     if ($user_id) {
@@ -40,7 +39,7 @@ $user_id = $facebook->getUser();
             echo '</tr>';
             echo '<tr>';
             echo '<td>NAME</td>';
-            echo '<td>' . $user_profile['name']. '</td>';
+            echo '<td>' . $user_profile['name'] . '</td>';
             echo '</tr>';
             echo '<tr>';
             echo '<td>USERNAME</td>';
@@ -69,18 +68,24 @@ $user_id = $facebook->getUser();
             echo '</tbody>';
             echo '</table></center>';
             echo '<br>';
-            echo '<center><div id="wall_post_link"><a href="wall_post.php" >WALL POST</a></div></center>';
-            echo '<center><div id="photo_upload_link"><a href="pic_upload.php">UPLOAD A PHOTO</a></div></center>';
+            echo '<center><div id="wall_post_link">
+                            <a href="wall_post.php" >WALL POST</a>
+                            |
+                            <a href="pic_upload.php">UPLOAD A PHOTO</a>
+                            |
+                            <a href="search.php">SEARCH</a>
+                          </div>
+                  </center>';
             echo '<br>';
             echo '<center><a href ="' . $facebook->getLogoutUrl(array('next' => 'http://localhost/GraphAPI/Facebook_PHP_SDK/logout.php')) . '"><img src="imgs/facebook_logout.jpg"></a></center>';
         } catch (FacebookApiException $e) {
-            $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday,user_location, publish_stream,photo_upload','redirect_uri'=>'http://localhost/GraphAPI/Facebook_PHP_SDK/index.php'));
+            $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday,user_location, publish_stream,photo_upload', 'redirect_uri' => 'http://localhost/GraphAPI/Facebook_PHP_SDK/index.php'));
             echo '<center><a href="' . $login_url . '"><img src="imgs/fb_login_icon.gif"></a></center>';
         }
     } else {
-        $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday, user_location, publish_stream, photo_upload','redirect_uri'=>'http://localhost/GraphAPI/Facebook_PHP_SDK/index.php'));
+        $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday, user_location, publish_stream, photo_upload', 'redirect_uri' => 'http://localhost/GraphAPI/Facebook_PHP_SDK/index.php'));
         echo '<center><a href="' . $login_url . '"><img src="imgs/fb_login_icon.gif"></center></a>';
     }
     ?>
- </body>
+</body>
 </html>
