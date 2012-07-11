@@ -79,11 +79,11 @@ $user_id = $facebook->getUser();
             echo '<br>';
             echo '<center><a href ="' . $facebook->getLogoutUrl(array('next' => 'http://localhost/GraphAPI/Facebook_PHP_SDK/logout.php')) . '"><img src="imgs/facebook_logout.jpg"></a></center>';
         } catch (FacebookApiException $e) {
-            $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday,user_location, publish_stream,photo_upload', 'redirect_uri' => 'http://localhost/GraphAPI/Facebook_PHP_SDK/index.php'));
+            $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday,user_location, publish_stream,photo_upload, read_stream', 'redirect_uri' => 'http://localhost/GraphAPI/Facebook_PHP_SDK/index.php'));
             echo '<center><a href="' . $login_url . '"><img src="imgs/fb_login_icon.gif"></a></center>';
         }
     } else {
-        $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday, user_location, publish_stream, photo_upload', 'redirect_uri' => 'http://localhost/GraphAPI/Facebook_PHP_SDK/index.php'));
+        $login_url = $facebook->getLoginUrl(array('scope' => 'email, user_birthday, user_location, publish_stream, photo_upload, read_stream', 'redirect_uri' => 'http://localhost/GraphAPI/Facebook_PHP_SDK/index.php'));
         echo '<center><a href="' . $login_url . '"><img src="imgs/fb_login_icon.gif"></center></a>';
     }
     ?>
